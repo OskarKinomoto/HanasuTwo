@@ -1,0 +1,32 @@
+syntax = "proto3";
+package Hanasu;
+
+message Header {
+    enum MsgType {
+        NONE = 0;
+        REG_REQ = 1;
+        REG_RES = 2;
+    }
+
+    MsgType type = 1;
+    string text = 2;
+}
+
+message RegReq {
+    string login_name = 1;
+    string nick = 2;
+    string pass = 3;
+}
+
+message ReqRes {
+    enum RC {
+        FAIL = 0;
+        SUCCESS = 1;
+        NAME_EXSISTS = 2;
+        PASS_SHORT = 3;
+        NAME_LONG = 4;
+        NICK_LONG = 5;
+    }
+    
+    RC rc = 1;
+}
